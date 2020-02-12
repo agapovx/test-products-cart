@@ -1,0 +1,39 @@
+{
+  "name": "test-products-cart",
+  "version": "1.0.0",
+  "description": "Test Products Cart Demo",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run server:dev",
+    "server:dev": "webpack-dev-server --mode development --config webpack.config.js --progress --color",
+    "build:dev": "webpack --mode development --config webpack.config.js --progress --color",
+    "build:prod": "webpack --mode production --config webpack.config.js --progress --color",
+    "bundleanalyze": "npm run build:prod -- --env.config=analyze"
+  },
+  "author": "Ilya Agapov",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.10.2",
+    "react-redux": "^7.1.3",
+    "react-router-dom": "^5.1.2"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.5",
+    "@types/react-dom": "^16.9.1",
+    "clean-webpack-plugin": "^2.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "ts-loader": "^6.2.0",
+    "typescript": "^3.6.3",
+    "webpack": "^4.41.0",
+    "webpack-bundle-analyzer": "^3.5.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2",
+    "webpack-merge": "^4.2.2",
+    "tslint": "^6.0.0",
+    "tslint-config-airbnb": "^5.11.2",
+    "tslint-react": "^4.2.0",
+    "tslint-react-a11y": "^1.1.0",
+    "tslint-react-hooks": "^2.2.1"
+  }
+}
