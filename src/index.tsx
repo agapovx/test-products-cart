@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { Suspense, StrictMode } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { render } from 'react-dom';
+import { Page } from 'app/ui/components/page';
 
-const App = () => null;
 
-render(<App />, document.getElementById('app'));
+
+render(<Page />, document.getElementById('app'));
