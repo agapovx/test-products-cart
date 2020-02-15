@@ -1,7 +1,7 @@
 /**
- * Получает данные из внутреннего хранилища
+ * Get data from the local storage by key
  * @template T
- * @param {string} key - ключ, по которому нужно взять данные из хранилища
+ * @param {string} key
  * @param {T} fallbackData
  */
 export const getDataFromLocalStorage = <T>(key: string, fallbackData: T): T => {
@@ -18,10 +18,10 @@ export const getDataFromLocalStorage = <T>(key: string, fallbackData: T): T => {
 };
 
 /**
- * Сохраняет данные во внутреннее хранилище
+ * Save data to the local storage
  * @template T
- * @param {string} key ключ, по которому нужно сохранить данные
- * @param {T} value значение, которое нужно сохранить
+ * @param {string} key
+ * @param {T} value
  */
 export const saveDataToLocalStorage = <T>(key: string, value: T) => {
   localStorage.setItem(key, JSON.stringify(value));
