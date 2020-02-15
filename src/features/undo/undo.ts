@@ -6,10 +6,11 @@ export type UndoableState<T> = {
   future: T[];
 };
 
-export const makeStateUndoable = <T, P>(mainReducer: (state: T | undefined, action: P | {}) => T) => {
-  const initialState = {
+
+export const makeStateUndoable = <T>(mainReducer: (state: T, action) => T, initValue: T) => {
+  const initialState: UndoableState<T> = {
     past: [],
-    present: mainReducer(undefined, {}),
+    present: mainReducer(initValue, {}),
     future: [],
   };
 
