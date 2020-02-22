@@ -14,7 +14,7 @@ export const makeStateUndoable = <T>(mainReducer: (state: T, action) => T, initV
     future: [],
   };
 
-  return function (state = initialState, action: UndoStateActions) {
+  return function (state = initialState, action) {
     const { past, present, future } = state;
 
     switch (action.type) {

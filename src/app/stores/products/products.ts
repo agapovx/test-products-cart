@@ -1,18 +1,11 @@
-export type ProductsState = {
-  products?: Product[];
-}
+import { createContext, useContext } from 'react';
 
 export type Product = {
   id: number;
   name: string;
-  imageUrl: string;
   amount: number;
+  storeAvailable: number;
 }
 
-export const products = (state, action) => {
-  switch (action.type) {
-
-    default:
-      return state;
-  }
-}
+export const ProductsContext = createContext<Product[]>([]);
+export const useProductsContext = () => useContext(ProductsContext);
