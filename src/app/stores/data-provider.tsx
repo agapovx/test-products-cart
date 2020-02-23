@@ -2,7 +2,7 @@ import React, { useReducer, useMemo } from 'react';
 import { ProductsContext, Product } from './products/products';
 import { CouponsContext, Coupon } from './coupons/coupons';
 import { CartStateContext, undoableCart, CartActionsContex } from './cart/cart';
-import { removeCoupon, addCoupon, addToCart, removeFromCart, updateProductCunt } from './cart/actions';
+import { undo, redo, removeCoupon, addCoupon, addToCart, removeFromCart, updateProductCount } from './cart/actions';
 
 import productsData from './products/data/products.json';
 import couponsData from './coupons/data/coupons.json';
@@ -22,16 +22,21 @@ export const CartCtxProvider = ({ children }) => {
 
   const removeCouponAction = (id: Coupon['id']) => dispatch(removeCoupon(id))
   const addCouponAction = (id: Coupon['id']) => dispatch(addCoupon(id))
-  const addToCartAction = (product: Product) => dispatch(addToCart(product))
+  const addToCartAction = (id: Product['id']) => dispatch(addToCart(id))
   const removeFromCartAction = (id: Product['id']) => dispatch(removeFromCart(id))
-  const updateProductCountAction = (id: Product['id']) => dispatch(updateProductCunt(id))
+  const updateProductCountAction = (id: Product['id'], count: number) =>
+    dispatch(updateProductCount(id, count))
+  const undoAction = () => dispatch(undo())
+  const redoAction = () => dispatch(redo())
 
   const actions = useMemo(() => ({
     removeCouponAction,
     addCouponAction,
     addToCartAction,
     removeFromCartAction,
-    updateProductCountAction
+    updateProductCountAction,
+    undoAction,
+    redoAction
   }), [])
 
   return (
