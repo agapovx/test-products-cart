@@ -1,6 +1,7 @@
 import { CartActions, CartStateActions } from './types';
 import { Product } from 'app/stores/products/products';
 import { Coupon } from 'app/stores/coupons/coupons';
+import { UndoActions, UndoStateActions } from 'app/core/types';
 
 export const removeCoupon = (id: Coupon['id']): CartStateActions => ({
   type: CartActions.REMOVE_COUPON,
@@ -12,9 +13,9 @@ export const addCoupon = (id: Coupon['id']): CartStateActions => ({
   payload: id
 })
 
-export const addToCart = (product: Product): CartStateActions => ({
+export const addToCart = (id: Product['id']): CartStateActions => ({
   type: CartActions.ADD_TO_CART,
-  payload: product
+  payload: id
 })
 
 export const removeFromCart = (id: Product['id']): CartStateActions => ({
@@ -22,7 +23,17 @@ export const removeFromCart = (id: Product['id']): CartStateActions => ({
   payload: id
 })
 
-export const updateProductCunt = (id: Product['id']): CartStateActions => ({
+export const updateProductCount = (id: Product['id'], count: number): CartStateActions => ({
   type: CartActions.UPDATE_PRODUCT_COUNT,
-  payload: id
+  payload: {
+    id, count
+  }
+})
+
+export const undo = (): UndoStateActions => ({
+  type: UndoActions.UNDO
+})
+
+export const redo = (): UndoStateActions => ({
+  type: UndoActions.REDO
 })

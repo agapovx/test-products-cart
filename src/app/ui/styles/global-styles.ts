@@ -16,5 +16,7 @@ export const GlobalStyle = createGlobalStyle`
     color: ${textColor};
     background-color: ${backgroundColor};
     font-size: 12px;
+
+    font-family: 'Quicksand';
   }
 `;

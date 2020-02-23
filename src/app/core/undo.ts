@@ -6,15 +6,21 @@ export type UndoableState<T> = {
   future: T[];
 };
 
+type Action = {
+  type: string;
+  payload?: any;
+}
 
-export const makeStateUndoable = <T>(mainReducer: (state: T, action) => T, initValue: T) => {
+
+export const makeStateUndoable = <T, U extends Action>
+  (mainReducer: (state: T, action) => T, initValue: T) => {
   const initialState: UndoableState<T> = {
     past: [],
     present: mainReducer(initValue, {}),
     future: [],
   };
 
-  return function (state = initialState, action) {
+  return function (state = initialState, action: UndoStateActions | U) {
     const { past, present, future } = state;
 
     switch (action.type) {

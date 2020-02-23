@@ -1,5 +1,5 @@
-const backgroundColor = '#fafafa';
-const textColor = '#c7c7c7';
+const backgroundColor = '#f0f0f0';
+const textColor = '#000';
 const contentColor = '#ffffff';
 
 export {
