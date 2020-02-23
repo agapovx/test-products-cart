@@ -27,5 +27,5 @@ export const CartActionsContex = createContext({});
 export const useCartActionsContext = () => useContext(CartActionsContex);
 
 export const CartStateContext = createContext
-  <UndoableState<CartItem[]>>({ past: [], present: [], future: [] });
+  <UndoableState<CartState>>({ past: [], present: { items: [] }, future: [] });
 export const useCartStateContext = () => useContext(CartStateContext);

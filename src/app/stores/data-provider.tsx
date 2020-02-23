@@ -18,7 +18,7 @@ export const ProductsCouponsCtxProvider = ({ children }) => {
 }
 
 export const CartCtxProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(undoableCart, { past: [], present: [], future: [] });
+  const [state, dispatch] = useReducer(undoableCart, { past: [], present: { items: [] }, future: [] });
 
   const removeCouponAction = (id: Coupon['id']) => dispatch(removeCoupon(id))
   const addCouponAction = (id: Coupon['id']) => dispatch(addCoupon(id))
