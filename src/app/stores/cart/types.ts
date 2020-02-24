@@ -22,7 +22,7 @@ type AddCouponAction = {
 
 type AddToCartAction = {
   type: typeof CartActions.ADD_TO_CART,
-  payload: Product['id']
+  payload: Product;
 }
 
 type RemoveFromCartAction = {
@@ -41,7 +41,7 @@ export type CartStateActions = AddCouponAction | RemoveCouponAction |
 export type CartCtxActions = {
   removeCouponAction: (id: Coupon['id']) => void,
   addCouponAction: (id: Coupon['id']) => void,
-  addToCartAction: (id: Product['id']) => void,
+  addToCartAction: (product: Product) => void,
   removeFromCartAction: (id: Product['id']) => void,
   updateProductCountAction: (id: Product['id'], count: number) => void,
   undoAction: () => void;
