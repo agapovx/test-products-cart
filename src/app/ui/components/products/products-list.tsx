@@ -1,24 +1,23 @@
 import React from 'react';
 import { useProductsContext } from 'app/stores/products/products';
-import { useCartStateContext } from 'app/stores/cart/cart';
+import { ProductsListWrapper, ProductsListSection } from 'app/ui/styles/products/products-list';
+import { ProductCart } from './product-cart';
 
 export const ProductsList = React.memo(() => (
-  <>
-    <header>
-      <h1>List of Products</h1>
-    </header>
-    <section>
+  <ProductsListWrapper>
+    <ProductsListSection>
       <Products />
-    </section>
-  </>
+    </ProductsListSection>
+  </ProductsListWrapper>
 ));
 
 const Products = () => {
   const products = useProductsContext();
-  const cart = useCartStateContext();
-  console.log('products: ', products);
-  console.log('cart: ', cart);
   return (
-    <h1>Products list</h1>
+    <>
+      {products.map(product => (
+        <ProductCart product={product} key={product.id} />
+      ))}
+    </>
   )
 }
