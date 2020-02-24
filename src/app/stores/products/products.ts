@@ -3,7 +3,7 @@ import { createContext, useContext } from 'react';
 export type Product = {
   id: number;
   name: string;
-  amount: number;
+  price: number;
   storeAvailable: number;
 }
 
