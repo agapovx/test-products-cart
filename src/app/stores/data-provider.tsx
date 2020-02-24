@@ -22,7 +22,7 @@ export const CartCtxProvider = ({ children }) => {
 
   const removeCouponAction = (id: Coupon['id']) => dispatch(removeCoupon(id))
   const addCouponAction = (id: Coupon['id']) => dispatch(addCoupon(id))
-  const addToCartAction = (id: Product['id']) => dispatch(addToCart(id))
+  const addToCartAction = (product: Product) => dispatch(addToCart(product))
   const removeFromCartAction = (id: Product['id']) => dispatch(removeFromCart(id))
   const updateProductCountAction = (id: Product['id'], count: number) =>
     dispatch(updateProductCount(id, count))
