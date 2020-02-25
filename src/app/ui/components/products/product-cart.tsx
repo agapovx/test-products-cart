@@ -5,7 +5,7 @@ import { useCartStateContext, useCartActionsContext } from 'app/stores/cart/cart
 import { ProductInfo } from './product-info';
 
 import { ProductCartWrapper } from 'app/ui/styles/products/product-cart';
-
+import { Button } from 'app/ui/styles/fragments/button';
 
 export const ProductCart = memo<{ product: Product }>(({ product }) => {
   return (
@@ -20,13 +20,17 @@ const ProductActions = memo<{ product: Product }>(({ product }) => {
   const { present } = useCartStateContext();
   const { removeFromCartAction, addToCartAction } = useCartActionsContext()!;
   const productInCart = present.items.filter(current => current.product.id === product.id);
+
+  const removeFromCart = () => removeFromCartAction(product.id);
+  const addToCart = () => addToCartAction(product);
+
   return !!productInCart.length ? (
-    <button onClick={() => removeFromCartAction(product.id)}>
+    <Button onClick={removeFromCart}>
       Delete from cart
-    </button>
+    </Button>
   ) : (
-      <button onClick={() => addToCartAction(product)}>
+      <Button onClick={addToCart}>
         Add to cart
-    </button>
+    </Button>
     )
 });
