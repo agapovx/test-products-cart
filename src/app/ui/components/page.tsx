@@ -13,6 +13,7 @@ import { ProductsCouponsCtxProvider, CartCtxProvider } from 'app/stores/data-pro
 
 const LazyNoMatch = lazy(() => import('app/ui/components/no-match'), 'NoMatch');
 const LazyProductsList = lazy(() => import('app/ui/components/products/products-list'), 'ProductsList')
+const LazyCart = lazy(() => import('app/ui/components/cart/cart'), 'Cart');
 
 export const Page = () => {
   return (
@@ -32,7 +33,9 @@ export const Page = () => {
                       <LazyProductsList />
                     </Route>
 
-
+                    <Route path="/cart/" exact>
+                      <LazyCart />
+                    </Route>
 
                     <Route>
                       <LazyNoMatch />
