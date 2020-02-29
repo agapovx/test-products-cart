@@ -2,11 +2,11 @@ import { createContext, useContext } from 'react';
 import { makeStateUndoable, UndoableState } from 'app/core/undo';
 import { Coupon } from 'app/stores/coupons/coupons';
 
-import { CartStateActions, CartActions, CartCtxActions } from './types';
+import { CartStateActions, CartActions } from './types';
 import { Product } from '../products/products';
 
 export type CartItem = {
-  product: Product;
+  id: Product['id'];
   count: number;
 }
 
@@ -30,20 +30,20 @@ const cart = (state: CartState, action: CartStateActions) => {
     case CartActions.ADD_TO_CART:
       return {
         ...state,
-        items: [...state.items, { product: action.payload, count: 1 }]
+        items: [...state.items, { id: action.payload, count: 1 }]
       }
     case CartActions.REMOVE_FROM_CART:
       return {
         ...state,
-        items: state.items.filter(item => item.product.id !== action.payload)
+        items: state.items.filter(item => item.id !== action.payload)
       }
     case CartActions.UPDATE_PRODUCT_COUNT:
       return {
         ...state,
         items: state.items.map(item => {
-          if (item.product.id === action.payload.id) {
+          if (item.id === action.payload.id) {
             return {
-              product: item.product,
+              id: item.id,
               count: action.payload.count
             }
           }
@@ -56,10 +56,3 @@ const cart = (state: CartState, action: CartStateActions) => {
 }
 
 export const undoableCart = makeStateUndoable<CartState, CartStateActions>(cart, { items: [] });
-
-export const CartActionsContex = createContext<CartCtxActions | null>(null);
-export const useCartActionsContext = () => useContext(CartActionsContex);
-
-export const CartStateContext = createContext
-  <UndoableState<CartState>>({ past: [], present: { items: [] }, future: [] });
-export const useCartStateContext = () => useContext(CartStateContext);

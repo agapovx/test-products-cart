@@ -1,3 +1,4 @@
+import { Action } from 'redux';
 import { UndoActions, UndoStateActions } from './types';
 
 export type UndoableState<T> = {
@@ -6,10 +7,6 @@ export type UndoableState<T> = {
   future: T[];
 };
 
-type Action = {
-  type: string;
-  payload?: any;
-}
 
 
 export const makeStateUndoable = <T, U extends Action>

@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-
+import couponsData from './data/coupons.json';
 
 export type Coupon = CartCoupon | ProductCoupon;
 
@@ -11,5 +11,4 @@ type BaseCouponFields = {
   amount: number;
 }
 
-export const CouponsContext = createContext<Coupon[]>([]);
-export const useCouponContext = () => useContext(CouponsContext);
+export const coupons = (state: Coupon[] = couponsData) => state;
