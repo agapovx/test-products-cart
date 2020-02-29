@@ -13,9 +13,9 @@ export const addCoupon = (id: Coupon['id']): CartStateActions => ({
   payload: id
 })
 
-export const addToCart = (product: Product): CartStateActions => ({
+export const addToCart = (id: Product['id']): CartStateActions => ({
   type: CartActions.ADD_TO_CART,
-  payload: product
+  payload: id
 })
 
 export const removeFromCart = (id: Product['id']): CartStateActions => ({

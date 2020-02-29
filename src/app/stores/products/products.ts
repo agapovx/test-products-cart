@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react';
+import productsData from './data/products.json';
 
 export type Product = {
   id: number;
@@ -7,5 +8,4 @@ export type Product = {
   storeAvailable: number;
 }
 
-export const ProductsContext = createContext<Product[]>([]);
-export const useProductsContext = () => useContext(ProductsContext);
+export const products = (state: Product[] = productsData) => state;
