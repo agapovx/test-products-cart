@@ -13,7 +13,7 @@ const mainReducer: Reducer<StoreState> = combineReducers<StoreState>({
 export type StoreState = {
   cart: UndoableState<CartState>
   coupons: Coupon[]
-  products: Product[]
+  products: Map<number, Product>
 }
 
 export const store = createStore(mainReducer);

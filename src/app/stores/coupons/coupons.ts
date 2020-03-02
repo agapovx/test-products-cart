@@ -1,4 +1,3 @@
-import { createContext, useContext } from 'react';
 import couponsData from './data/coupons.json';
 
 export type Coupon = CartCoupon | ProductCoupon;

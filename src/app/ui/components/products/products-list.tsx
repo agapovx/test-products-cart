@@ -16,13 +16,15 @@ export const ProductsList = React.memo(() => (
   </ProductsListWrapper>
 ));
 
-const ProductsContainer: FC<{ products: Product[] }> = ({ products }) => (
-  <>
-    {products.map(product => (
-      <ProductCart product={product} key={product.id} />
-    ))}
-  </>
-)
+const ProductsContainer: FC<{ products: Map<number, Product> }> = ({ products }) => {
+  return (
+    <>
+      {Array.from(products.values()).map(product => (
+        <ProductCart product={product} key={product.id} />
+      ))};
+    </>
+  )
+}
 
 const mapProductsState = (state: StoreState) => ({
   products: state.products
