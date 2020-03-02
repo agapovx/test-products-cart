@@ -1,7 +1,7 @@
 import React, { memo, FC } from 'react';
 import { connect } from 'react-redux';
 import { StoreState } from 'app/stores/store';
-import { undo, redo } from 'app/stores/cart/actions';
+import { undo, redo } from 'app/core/actions';
 import { undoAvaliable, redoAvaliable } from 'app/stores/cart/selectors';
 
 import { MemoizedButton } from 'app/ui/components/fragments/memoized-button';

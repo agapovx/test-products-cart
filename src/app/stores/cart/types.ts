@@ -1,6 +1,5 @@
 import { Product } from 'app/stores/products/products';
 import { Coupon } from 'app/stores/coupons/coupons';
-import { UndoStateActions } from 'app/core/types';
 
 export enum CartActions {
   ADD_COUPON = 'cart/addcoupon',
@@ -36,4 +35,4 @@ type UpdateProductCountAction = {
 }
 
 export type CartStateActions = AddCouponAction | RemoveCouponAction |
-  AddToCartAction | RemoveFromCartAction | UpdateProductCountAction | UndoStateActions;
+  AddToCartAction | RemoveFromCartAction | UpdateProductCountAction;
