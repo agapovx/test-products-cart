@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { UndoActions, UndoStateActions } from './types';
+import { UndoRedoActions, UndoRedoStateActions } from './types';
 
 export type UndoableState<T> = {
   past: T[];
@@ -17,11 +17,11 @@ export const makeStateUndoable = <T, U extends Action>
     future: [],
   };
 
-  return function (state = initialState, action: UndoStateActions | U) {
+  return function (state = initialState, action: UndoRedoStateActions | U) {
     const { past, present, future } = state;
 
     switch (action.type) {
-      case UndoActions.UNDO:
+      case UndoRedoActions.UNDO:
         const previous = past[past.length - 1];
         const newPast = past.slice(0, past.length - 1);
         return {
@@ -29,7 +29,7 @@ export const makeStateUndoable = <T, U extends Action>
           present: previous,
           future: [present, ...future],
         };
-      case UndoActions.REDO:
+      case UndoRedoActions.REDO:
         const next = future[0];
         const newFuture = future.slice(1);
         return {

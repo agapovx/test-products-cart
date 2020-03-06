@@ -1,9 +1,9 @@
-import { UndoStateActions, UndoActions } from 'app/core/types';
+import { UndoRedoStateActions, UndoRedoActions } from 'app/core/types';
 
-export const undo = (): UndoStateActions => ({
-  type: UndoActions.UNDO
+export const undo = (): UndoRedoStateActions => ({
+  type: UndoRedoActions.UNDO
 })
 
-export const redo = (): UndoStateActions => ({
-  type: UndoActions.REDO
+export const redo = (): UndoRedoStateActions => ({
+  type: UndoRedoActions.REDO
 })

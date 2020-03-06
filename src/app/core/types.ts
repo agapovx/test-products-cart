@@ -1,14 +1,14 @@
-export enum UndoActions {
+export enum UndoRedoActions {
   UNDO = 'history/undo',
   REDO = 'history/redo',
 }
 
 interface UndoStateAction {
-  type: typeof UndoActions.UNDO
+  type: typeof UndoRedoActions.UNDO
 }
 
 interface RedoStateAction {
-  type: typeof UndoActions.REDO
+  type: typeof UndoRedoActions.REDO
 }
 
-export type UndoStateActions = UndoStateAction | RedoStateAction;
+export type UndoRedoStateActions = UndoStateAction | RedoStateAction;
