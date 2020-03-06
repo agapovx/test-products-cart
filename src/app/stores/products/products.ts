@@ -1,4 +1,3 @@
-import { createContext, useContext } from 'react';
 import productsData from './data/products.json';
 
 export type Product = {
@@ -8,4 +7,12 @@ export type Product = {
   storeAvailable: number;
 }
 
-export const products = (state: Product[] = productsData) => state;
+const mapState = () => {
+  const productsMap: Map<number, Product> = new Map();
+  for (const product of productsData) {
+    productsMap.set(product.id, product);
+  }
+  return productsMap;
+}
+
+export const products = (state: Map<number, Product> = mapState()) => state;

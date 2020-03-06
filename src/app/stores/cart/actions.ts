@@ -1,7 +1,6 @@
 import { CartActions, CartStateActions } from './types';
 import { Product } from 'app/stores/products/products';
 import { Coupon } from 'app/stores/coupons/coupons';
-import { UndoActions, UndoStateActions } from 'app/core/types';
 
 export const removeCoupon = (id: Coupon['id']): CartStateActions => ({
   type: CartActions.REMOVE_COUPON,
@@ -28,12 +27,4 @@ export const updateProductCount = (id: Product['id'], count: number): CartStateA
   payload: {
     id, count
   }
-})
-
-export const undo = (): UndoStateActions => ({
-  type: UndoActions.UNDO
-})
-
-export const redo = (): UndoStateActions => ({
-  type: UndoActions.REDO
 })
