@@ -19,7 +19,7 @@ const LazyCart = lazy(() => import('app/ui/components/cart/cart'), 'Cart');
 
 export const Page = () => {
   return (
-    <StrictMode>
+    <>
       <GlobalStyle />
       <Provider store={store} >
         <Router>
@@ -47,6 +47,6 @@ export const Page = () => {
           </Layout>
         </Router>
       </Provider>
-    </StrictMode>
+    </>
   )
 };
