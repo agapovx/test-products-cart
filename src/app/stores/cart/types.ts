@@ -1,6 +1,16 @@
 import { Product } from 'app/stores/products/products';
 import { Coupon } from 'app/stores/coupons/coupons';
 
+export type CartItem = {
+  id: Product['id'];
+  count: number;
+}
+
+export type CartState = {
+  items: CartItem[];
+  coupon?: Coupon['id'];
+}
+
 export enum CartActions {
   ADD_COUPON = 'cart/addcoupon',
   REMOVE_COUPON = 'cart/removecoupon',

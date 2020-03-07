@@ -1,19 +1,6 @@
-import { createContext, useContext } from 'react';
-import { makeStateUndoable, UndoableState } from 'app/core/undo';
-import { Coupon } from 'app/stores/coupons/coupons';
+import { makeStateUndoable } from 'app/core/undo';
 
-import { CartStateActions, CartActions } from './types';
-import { Product } from '../products/products';
-
-export type CartItem = {
-  id: Product['id'];
-  count: number;
-}
-
-export type CartState = {
-  items: CartItem[];
-  coupon?: Coupon['id'];
-}
+import { CartStateActions, CartActions, CartState } from './types';
 
 const cart = (state: CartState, action: CartStateActions) => {
   switch (action.type) {
