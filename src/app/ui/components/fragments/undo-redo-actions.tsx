@@ -28,7 +28,7 @@ const RedoAction = () => {
   const dispatch = useDispatch();
   const action = () => dispatch(redo());
   return (
-    <MemoizedButton aria-label={'Undo'} title={'Redo'} onClick={action} disabled={!available}>
+    <MemoizedButton aria-label={'Redo'} title={'Redo'} onClick={action} disabled={!available}>
       Redo
     </MemoizedButton>
   )
