@@ -8,13 +8,15 @@ import { CartItem } from 'app/stores/cart/types';
 
 import { StoreState } from 'app/stores/store';
 
+import { CartItemsListWrapper } from 'app/ui/styles/cart/cart-items-list';
+
 export const CartItemsListContainer: FC<{ items: CartItem[] }> = ({ items }) => {
   return (
-    <>
+    <CartItemsListWrapper>
       {items.length > 0 ? (
-        items.map((item, key) => <ProductCartItem key={item.id} id={0} count={0} />)
+        items.map(item => <ProductCartItem key={item.id} id={item.id} count={item.count} />)
       ) : <EmptyCart />}
-    </>
+    </CartItemsListWrapper>
   )
 
 }
