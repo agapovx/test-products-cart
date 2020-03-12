@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import { updateProductCount } from 'app/stores/cart/actions';
 import { makeMemoizedProduct } from 'app/stores/products/selectors';
 
+import { memoizedCount } from 'app/stores/cart/selectors';
+
 import { Product } from 'app/stores/products/products';
 import { StoreState } from 'app/stores/store';
 
@@ -14,11 +16,11 @@ import { CartItemCount } from './cart-item-count';
 
 type CartItemOwnProps = {
   id: number;
-  count: number;
 }
 
 type CartItemProps = {
   product: Product;
+  count: number;
   updateCount: (id: number, count: number) => void;
 }
 
@@ -52,7 +54,8 @@ const makeMapCartProps = () => {
   const memoizedProducts = makeMemoizedProduct();
 
   const mapCartProps = (state: StoreState, ownProps: CartItemOwnProps) => ({
-    product: memoizedProducts(state, ownProps.id)
+    product: memoizedProducts(state, ownProps.id),
+    count: memoizedCount(state, ownProps.id)
   })
 
   return mapCartProps;

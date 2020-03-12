@@ -3,18 +3,15 @@ import { connect } from 'react-redux';
 import { ProductCartItem } from './cart-item';
 
 import { memoizedCartItems } from 'app/stores/cart/selectors';
-
-import { CartItem } from 'app/stores/cart/types';
-
 import { StoreState } from 'app/stores/store';
 
 import { CartItemsListWrapper } from 'app/ui/styles/cart/cart-items-list';
 
-export const CartItemsListContainer: FC<{ items: CartItem[] }> = ({ items }) => {
+export const CartItemsListContainer: FC<{ items: number[] }> = ({ items }) => {
   return (
     <CartItemsListWrapper>
       {items.length > 0 ? (
-        items.map(item => <ProductCartItem key={item.id} id={item.id} count={item.count} />)
+        items.map(item => <ProductCartItem key={item} id={item} />)
       ) : <EmptyCart />}
     </CartItemsListWrapper>
   )

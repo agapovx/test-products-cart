@@ -1,13 +1,13 @@
 import { Product } from 'app/stores/products/products';
 import { Coupon } from 'app/stores/coupons/coupons';
 
-export type CartItem = {
-  id: Product['id'];
+export type CartItemInfo = {
   count: number;
 }
 
 export type CartState = {
-  items: CartItem[];
+  items: number[];
+  itemsInfo: { [key: number]: number }
   coupon?: Coupon['id'];
 }
 
