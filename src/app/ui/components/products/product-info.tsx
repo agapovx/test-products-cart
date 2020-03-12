@@ -8,6 +8,9 @@ import {
   ProductAdditionalInfo, ProductPrice, ProductName, ProductMainInfo
 } from 'app/ui/styles/products/product-info';
 
+/**
+ * Render full product info
+ */
 export const ProductInfo = memo<{ product: Product }>(({ product }) => {
   return (
     <ProductInfoWrapper>

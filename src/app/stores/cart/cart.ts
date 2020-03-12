@@ -1,19 +1,7 @@
-import { createContext, useContext } from 'react';
-import { makeStateUndoable, UndoableState } from 'app/core/undo';
-import { Coupon } from 'app/stores/coupons/coupons';
+import { makeStateUndoable } from 'app/core/undo';
+import { omitValue } from 'common/utils/omit';
 
-import { CartStateActions, CartActions } from './types';
-import { Product } from '../products/products';
-
-export type CartItem = {
-  id: Product['id'];
-  count: number;
-}
-
-export type CartState = {
-  items: CartItem[];
-  coupon?: Coupon['id'];
-}
+import { CartStateActions, CartActions, CartState } from './types';
 
 const cart = (state: CartState, action: CartStateActions) => {
   switch (action.type) {
@@ -30,29 +18,26 @@ const cart = (state: CartState, action: CartStateActions) => {
     case CartActions.ADD_TO_CART:
       return {
         ...state,
-        items: [...state.items, { id: action.payload, count: 1 }]
+        items: [...state.items, action.payload],
+        itemsInfo: Object.assign({}, state.itemsInfo, { [action.payload]: 1 })
       }
     case CartActions.REMOVE_FROM_CART:
       return {
         ...state,
-        items: state.items.filter(item => item.id !== action.payload)
+        items: state.items.filter(item => item !== action.payload),
+        itemsInfo: omitValue<{ [key: number]: number }, typeof action.payload>(state.itemsInfo, action.payload)
       }
     case CartActions.UPDATE_PRODUCT_COUNT:
       return {
         ...state,
-        items: state.items.map(item => {
-          if (item.id === action.payload.id) {
-            return {
-              id: item.id,
-              count: action.payload.count
-            }
-          }
-          return item;
-        })
+        itemsInfo: Object.assign({}, state.itemsInfo, { [action.payload.id]: action.payload.count })
       }
     default:
       return state;
   }
 }
 
-export const undoableCart = makeStateUndoable<CartState, CartStateActions>(cart, { items: [] });
+/**
+ * Cart reducer that have undo/redo functionality and have full info about cart
+ */
+export const undoableCart = makeStateUndoable<CartState, CartStateActions>(cart, { items: [], itemsInfo: {} });

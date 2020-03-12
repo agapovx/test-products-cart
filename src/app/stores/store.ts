@@ -1,7 +1,8 @@
 import { createStore, combineReducers, Reducer } from 'redux';
 import { products, Product } from './products/products';
 import { coupons, Coupon } from './coupons/coupons';
-import { undoableCart, CartState } from './cart/cart';
+import { undoableCart } from './cart/cart';
+import { CartState } from './cart/types';
 import { UndoableState } from 'app/core/undo';
 
 const mainReducer: Reducer<StoreState> = combineReducers<StoreState>({

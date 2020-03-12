@@ -5,6 +5,9 @@ import { undoAvailable, redoAvailable } from 'app/stores/cart/selectors';
 
 import { MemoizedButton } from 'app/ui/components/fragments/memoized-button';
 
+/**
+ * Action buttons with Undo/Redo functional
+ */
 export const UndoRedo = memo((() => (
   <>
     <UndoAction />
@@ -28,7 +31,7 @@ const RedoAction = () => {
   const dispatch = useDispatch();
   const action = () => dispatch(redo());
   return (
-    <MemoizedButton aria-label={'Undo'} title={'Redo'} onClick={action} disabled={!available}>
+    <MemoizedButton aria-label={'Redo'} title={'Redo'} onClick={action} disabled={!available}>
       Redo
     </MemoizedButton>
   )

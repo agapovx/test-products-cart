@@ -1,4 +1,5 @@
 import React, { memo, FC } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { StoreState } from 'app/stores/store';
 import { addToCart, removeFromCart } from 'app/stores/cart/actions';
@@ -10,6 +11,9 @@ import { Product } from 'app/stores/products/products';
 import { ProductCartWrapper } from 'app/ui/styles/products/product-cart';
 import { Button } from 'app/ui/styles/fragments/button';
 
+/**
+ * Render product-item
+ */
 export const ProductCart = memo<{ product: Product }>(({ product }) => {
   return (
     <ProductCartWrapper>
@@ -35,11 +39,11 @@ const ProductActionsContainer = memo<ActionOwnProps & ActionProps>(({ inCart, id
   const addToCart = () => add(id);
 
   return inCart ? (
-    <Button onClick={removeFromCart}>
+    <Button aria-label={'Delete from cart'} title={'Delete from cart'} onClick={removeFromCart}>
       Delete from cart
     </Button>
   ) : (
-      <Button onClick={addToCart}>
+      <Button aria-label={'Add to cart'} title={'Add to cart'} onClick={addToCart}>
         Add to cart
     </Button>
     )
@@ -51,11 +55,9 @@ const mapActionProps = (state: StoreState, ownProps: ActionOwnProps) => {
   }
 }
 
-const mapDispatchProps = dispatch => {
-  return {
-    add: (id: number) => dispatch(addToCart(id)),
-    remove: (id: number) => dispatch(removeFromCart(id))
-  }
-}
+const mapDispatchProps = dispatch => bindActionCreators({
+  add: addToCart,
+  remove: removeFromCart
+}, dispatch)
 
 const ProductActions: FC<ActionOwnProps> = connect(mapActionProps, mapDispatchProps)(ProductActionsContainer);

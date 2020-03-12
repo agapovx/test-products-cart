@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { memo } from 'react';
+import { connect } from 'react-redux';
 
-export const Cart = React.memo(() => (
+import { CartItemsList } from './cart-items-list';
+
+/**
+ * Cart View
+ */
+export const Cart = memo(() => (
   <>
-    <h1>Cart Component starts here</h1>
+    <CartItemsList />
   </>
 ))
