@@ -1,8 +1,9 @@
 /**
  * Get data from the local storage by key
- * @template T
- * @param {string} key
- * @param {T} fallbackData
+ * @export
+ * @template T Type of the data in local storage
+ * @param {string} key Key of local storage
+ * @param {T} fallbackData Fallback data if local storage is empty
  */
 export const getDataFromLocalStorage = <T>(key: string, fallbackData: T): T => {
   const storageState = localStorage.getItem(key);
@@ -19,8 +20,9 @@ export const getDataFromLocalStorage = <T>(key: string, fallbackData: T): T => {
 
 /**
  * Save data to the local storage
- * @template T
- * @param {string} key
+ * @export
+ * @template T Type of the data in local storage
+ * @param {string} key Key of local storage
  * @param {T} value
  */
 export const saveDataToLocalStorage = <T>(key: string, value: T) => {

@@ -27,8 +27,6 @@ type CartItemProps = {
 const ProductCartItemContainer = memo<CartItemOwnProps & CartItemProps>(({ id, count, product, updateCount }) => {
   const updateProductCount = (count: number) => updateCount(id, count);
 
-  console.log('rerender product with id: ', id);
-
   return (
     <CartItemContainer>
       <CartItemContent>
@@ -51,10 +49,10 @@ const ProductCartItemContainer = memo<CartItemOwnProps & CartItemProps>(({ id, c
 })
 
 const makeMapCartProps = () => {
-  const memoizedProducts = makeMemoizedProduct();
+  const memoizedProduct = makeMemoizedProduct();
 
   const mapCartProps = (state: StoreState, ownProps: CartItemOwnProps) => ({
-    product: memoizedProducts(state, ownProps.id),
+    product: memoizedProduct(state, ownProps.id),
     count: memoizedCount(state, ownProps.id)
   })
 
@@ -65,5 +63,8 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   updateCount: updateProductCount
 }, dispatch)
 
+/**
+ * Render cart item
+ */
 export const ProductCartItem: FC<CartItemOwnProps> =
   connect(makeMapCartProps, mapDispatchToProps)(ProductCartItemContainer);

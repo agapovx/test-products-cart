@@ -9,6 +9,9 @@ import { ProductCart } from './product-cart';
 
 import { ProductsListWrapper, ProductsListSection } from 'app/ui/styles/products/products-list';
 
+/**
+ * Available products view
+ */
 export const ProductsList = React.memo(() => (
   <ProductsListWrapper>
     <ProductsListSection>

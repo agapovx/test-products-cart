@@ -5,6 +5,9 @@ type CartItemCountProps = {
   updateCount: (count: number) => void;
 }
 
+/**
+ * Cart-item action component that change count of item in cart
+ */
 export const CartItemCount = memo<CartItemCountProps>(({ count, maxCount, updateCount }) => {
   const minimalCount = 1;
 

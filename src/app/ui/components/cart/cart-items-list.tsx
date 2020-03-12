@@ -7,7 +7,7 @@ import { StoreState } from 'app/stores/store';
 
 import { CartItemsListWrapper } from 'app/ui/styles/cart/cart-items-list';
 
-export const CartItemsListContainer: FC<{ items: number[] }> = ({ items }) => {
+const CartItemsListContainer: FC<{ items: number[] }> = ({ items }) => {
   return (
     <CartItemsListWrapper>
       {items.length > 0 ? (
@@ -24,4 +24,7 @@ const mapProductsState = (state: StoreState) => ({
   items: memoizedCartItems(state)
 })
 
+/**
+ * Render all cart items
+ */
 export const CartItemsList = connect(mapProductsState)(CartItemsListContainer);

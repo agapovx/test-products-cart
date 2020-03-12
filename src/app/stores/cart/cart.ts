@@ -37,4 +37,7 @@ const cart = (state: CartState, action: CartStateActions) => {
   }
 }
 
+/**
+ * Cart reducer that have undo/redo functionality and have full info about cart
+ */
 export const undoableCart = makeStateUndoable<CartState, CartStateActions>(cart, { items: [], itemsInfo: {} });

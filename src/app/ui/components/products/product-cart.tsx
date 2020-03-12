@@ -11,6 +11,9 @@ import { Product } from 'app/stores/products/products';
 import { ProductCartWrapper } from 'app/ui/styles/products/product-cart';
 import { Button } from 'app/ui/styles/fragments/button';
 
+/**
+ * Render product-item
+ */
 export const ProductCart = memo<{ product: Product }>(({ product }) => {
   return (
     <ProductCartWrapper>

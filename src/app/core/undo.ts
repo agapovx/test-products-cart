@@ -7,8 +7,14 @@ export type UndoableState<T> = {
   future: T[];
 };
 
-
-
+/**
+ * Wrap any reducer and return reducer with undo/redo functionality
+ * @export
+ * @template T Type of the state that will wrapped into undo/redo functionality
+ * @template U Type of the actions of state
+ * @param mainReducer Reducer that will wrapped into undo/redo functionality
+ * @param initValue Initial value to given reducer
+ */
 export const makeStateUndoable = <T, U extends Action>
   (mainReducer: (state: T, action) => T, initValue: T) => {
   const initialState: UndoableState<T> = {
