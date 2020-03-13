@@ -29,21 +29,18 @@ type ActionOwnProps = {
 
 type ActionProps = {
   inCart: boolean;
-  add: (id: number) => void;
-  remove: (id: number) => void;
+  add: () => void;
+  remove: () => void;
 }
 
 const ProductActionsContainer = memo<ActionOwnProps & ActionProps>(({ inCart, id, add, remove }) => {
 
-  const removeFromCart = () => remove(id);
-  const addToCart = () => add(id);
-
   return inCart ? (
-    <Button aria-label={'Delete from cart'} title={'Delete from cart'} onClick={removeFromCart}>
+    <Button aria-label={'Delete from cart'} title={'Delete from cart'} onClick={remove}>
       Delete from cart
     </Button>
   ) : (
-      <Button aria-label={'Add to cart'} title={'Add to cart'} onClick={addToCart}>
+      <Button aria-label={'Add to cart'} title={'Add to cart'} onClick={add}>
         Add to cart
     </Button>
     )
@@ -55,9 +52,9 @@ const mapActionProps = (state: StoreState, ownProps: ActionOwnProps) => {
   }
 }
 
-const mapDispatchProps = dispatch => bindActionCreators({
-  add: addToCart,
-  remove: removeFromCart
-}, dispatch)
+const mapDispatchProps = (dispatch, ownProps: ActionOwnProps) => ({
+  add: () => dispatch(addToCart(ownProps.id)),
+  remove: () => dispatch(removeFromCart(ownProps.id))
+})
 
 const ProductActions: FC<ActionOwnProps> = connect(mapActionProps, mapDispatchProps)(ProductActionsContainer);

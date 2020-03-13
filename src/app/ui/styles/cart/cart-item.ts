@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from 'app/ui/styles/fragments/button';
 import { boxShadow } from '../colors';
 
 export const CartItemContainer = styled.div`
@@ -35,4 +36,24 @@ export const CartItemContentRight = styled.div`
 export const CartItemActions = styled.div`
   display:flex;
   flex-direction:column;
+
+  margin-bottom: 20px;
+
+  ${Button} {
+    padding: 5px 25px;
+  }
+`;
+
+export const CartItemCountWrapper = styled.div`
+  display:flex;
+  align-items: center;
+
+  span {
+    margin-right: 10px;
+  }
+
+  margin-bottom: 10px;
+`;
+
+export const CartItemTotalInfoWrapper = styled.div`
 `;
