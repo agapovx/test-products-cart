@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { connect } from 'react-redux';
+import { CartTotalInfo } from './cart-total-info';
 
 import { CartItemsList } from './cart-items-list';
 
@@ -9,5 +9,6 @@ import { CartItemsList } from './cart-items-list';
 export const Cart = memo(() => (
   <>
     <CartItemsList />
+    <CartTotalInfo />
   </>
 ))
